@@ -23,7 +23,7 @@ class DiffColorer(object):
         self.esc_addh = '\033[0;32;44m'
         self.esc_rem = '\033[0;31m'
         self.esc_remh = '\033[0;31;44m'
-        self.esc_tws = '\033[0;41m' 
+        self.esc_tws = '\033[0;41m'
         self.esc_off = '\033[0;0m'
         self.overflow = 0
         self.maxLines = 100000
