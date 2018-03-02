@@ -1,0 +1,37 @@
+alias ls='ls -GF'
+alias ll='ls -GFl'
+alias llt='ls -GFltr'
+alias la='ls -GFa'
+alias l='less'
+alias cl='clear'
+alias d='dirs -v'
+alias pu='sam_pushd' # see function defined in .bashrc
+alias pd='sam_popd' # see function defined in .bashrc
+alias ..='cd ..'
+alias ...='cd ../..'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias ga='git add'
+alias gb='git branch'
+alias gbl='git branch -vv --list'
+alias gco='git checkout'
+alias gci='git commit'
+alias gd='better_git_diff' # see function defined in .bashrc
+alias gdc='better_git_diff --cached'
+alias gshow='better_git_show' # see function defined in .bashrc
+alias gs='git status -bs'
+alias gsl='git --no-pager stash list'
+alias gss='git stash show -p'
+
+alias rot13='tr A-Za-z N-ZA-Mn-za-m'
+
+alias devtail='multitail -cS ddslog /opt/www/dds/data/logs/dds.log -cS phplog /opt/log/php.log /opt/log/mysql/error.log'
+
+alias vmrun='/Applications/VMware\ Fusion.app/Contents/Library/vmrun'
+
+alias agall='/usr/local/bin/ag'
+alias ag='echo "ignoring tests - use \`aggall\` to include"; echo; /usr/local/bin/ag --ignore tests'
+alias php='php -d error_reporting=24575'
