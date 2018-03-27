@@ -25,6 +25,10 @@ function better_git_show() {
 	git show "${@}" | colordiff.py | less -iFXRS -x4
 }
 
+function better_ag() {
+    /usr/local/bin/ag -H --color "${@}" | less -iFXRS -x4
+}
+
 WHITE="\[\033[0;37m\]"
 BLACK="\[\033[0;30m\]"
 RED="\[\033[0;31m\]"
