@@ -23,7 +23,7 @@ alias gd='better_git_diff' # see function defined in .bashrc
 alias gdc='better_git_diff --cached'
 alias gshow='better_git_show' # see function defined in .bashrc
 alias gs='git status -bs'
-alias gsl='git --no-pager stash list'
+alias gsl='git --no-pager stash list --pretty=format:"%C(red)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %<(64,trunc)%s %C(green)(%cr)%C(reset)"&&echo'
 alias gss='git stash show -p'
 
 alias rot13='tr A-Za-z N-ZA-Mn-za-m'
