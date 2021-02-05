@@ -43,10 +43,6 @@ PS1="$GREEN\u$NORM@$RED\h$NORM:$BLUE\W $CYAN\$(parse_git_branch)$NORM\$ "
 
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/#$HOME/~}\007"'
 
-export PIP_REQUIRE_VIRTUALENV=true
-export WORKON_HOME=~/virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
-pushd /opt/puppet-ctl
-pushd /opt/www/assessment
-pushd /opt/www/dds
+#export PIP_REQUIRE_VIRTUALENV=true
+#export WORKON_HOME=~/virtualenvs
+#source /usr/local/bin/virtualenvwrapper.sh
