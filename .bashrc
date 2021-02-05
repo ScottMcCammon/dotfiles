@@ -29,6 +29,10 @@ function better_ag() {
     /usr/local/bin/ag -H --color "${@}" | less -iFXRS -x4
 }
 
+function diffu() {
+    diff -u "${@}" | colordiff.py | less -iFXRS -x4
+}
+
 WHITE="\[\033[0;37m\]"
 BLACK="\[\033[0;30m\]"
 RED="\[\033[0;31m\]"
