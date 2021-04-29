@@ -54,7 +54,7 @@ class DiffColorer(object):
 
     def flush(self, fout, formatWords=True):
         if formatWords and len(self.remLines) == len(self.addLines):
-            for i in xrange(0, len(self.remLines)):
+            for i in range(0, len(self.remLines)):
                 (rem, add) = self.diffLines(self.remLines[i], self.addLines[i])
                 self.remLines[i] = rem
                 self.addLines[i] = add
@@ -142,7 +142,7 @@ class DiffColorer(object):
 
         # for simple inserts/deletes, try shifting the changed range
         # to the left in order to align spacing
-        wc = string.digits + string.uppercase + string.lowercase
+        wc = string.digits + string.ascii_letters
         ll = max([line1, line2], key=len)
         if start and end and (start - end) >= limit1 and (ll[start-1] in wc or ll[end-1] in wc):
             (s, e) = (start-1, end-1)
@@ -175,7 +175,7 @@ def main(argv=None):
         signal.signal(signal.SIGPIPE, handleSigpipe)
         dc = DiffColorer()
         dc.color(sys.stdin, sys.stdout)
-    except Exception, err:
+    except Exception as err:
         print >>sys.stderr, err
         return 1
 
