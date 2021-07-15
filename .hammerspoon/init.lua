@@ -1,3 +1,6 @@
+-- speed-dial for the most commonly used apps
+-- sadly there is no "poison control" key for vim
+
 hs.hotkey.bind({"alt"}, "1", function()
   hs.application.launchOrFocus("MacVim")
 end)
@@ -18,7 +21,11 @@ hs.hotkey.bind({"alt"}, "5", function()
   hs.application.launchOrFocus("Amplify Mail")
 end)
 
+hs.hotkey.bind({"alt"}, "6", function()
+  hs.application.launchOrFocus("Google Calendar")
+end)
+
+-- can never have too many calendars?
 hs.loadSpoon("Calendar")
 hs.loadSpoon("HCalendar")
 spoon.HCalendar:start()
-
