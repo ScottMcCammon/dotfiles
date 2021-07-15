@@ -29,4 +29,4 @@ alias gss='git stash show -p'
 alias rot13='tr A-Za-z N-ZA-Mn-za-m'
 
 alias agall='better_ag'
-alias ag='echo "ignoring tests - use \`aggall\` to include"; echo; better_ag --ignore tests'
+alias ag='echo "ignoring tests - use \`aggall\` to include"; echo; better_ag --ignore tests --ignore vendor'
