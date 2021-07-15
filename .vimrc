@@ -15,6 +15,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'preservim/nerdtree'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+
+" vim-misc is a vim-session dependency
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
