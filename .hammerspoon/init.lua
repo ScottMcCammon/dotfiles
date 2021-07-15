@@ -14,19 +14,19 @@ hs.hotkey.bind({"alt"}, "3", function()
 end)
 
 hs.hotkey.bind({"alt"}, "4", function()
+  hs.application.launchOrFocus("Sequel Ace")
+end)
+
+hs.hotkey.bind({"alt"}, "0", function()
   hs.application.launchOrFocus("Slack")
 end)
 
-hs.hotkey.bind({"alt"}, "5", function()
+hs.hotkey.bind({"alt"}, "9", function()
   hs.application.launchOrFocus("Amplify Mail")
 end)
 
-hs.hotkey.bind({"alt"}, "6", function()
+hs.hotkey.bind({"alt"}, "8", function()
   hs.application.launchOrFocus("Google Calendar")
-end)
-
-hs.hotkey.bind({"alt"}, "7", function()
-  hs.application.launchOrFocus("Sequel Ace")
 end)
 
 -- can never have too many calendars?
