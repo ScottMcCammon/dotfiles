@@ -18,6 +18,12 @@ for f in $(find . -type f -depth 1 -not -name '*.swp'); do
     fi
 done
 
+# special handling for dotfile directories
+if [[ ! -e "$HOME/.hammerspoon" ]]; then
+    echo "installing .hammerspoon"
+    ln -s $mydir/.hammerspoon ..
+fi
+
 if [[ ! -e "../bin" ]]; then
     mkdir ../bin
 fi
