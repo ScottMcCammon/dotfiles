@@ -14,7 +14,7 @@ function sam_popd {
 }
 
 function parse_git_branch() {
-  git name-rev HEAD 2> /dev/null | sed 's/^HEAD\ \(.*\)/(git:\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(git:\1)/'
 }
 
 function better_git_diff() {
