@@ -14,15 +14,15 @@ function sam_popd {
 }
 
 function parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(git:\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(git:\1)/'
 }
 
 function better_git_diff() {
-	git diff "${@}" | colordiff.py | less -iFXRS -x4
+    git diff "${@}" | colordiff.py | less -iFXRS -x4
 }
 
 function better_git_show() {
-	git show "${@}" | colordiff.py | less -iFXRS -x4
+    git show "${@}" | colordiff.py | less -iFXRS -x4
 }
 
 function better_ag() {
