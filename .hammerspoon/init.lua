@@ -29,6 +29,10 @@ hs.hotkey.bind({"alt"}, "8", function()
   hs.application.launchOrFocus("Google Calendar")
 end)
 
+hs.hotkey.bind({"alt"}, "7", function()
+  hs.application.launchOrFocus("Google Meet")
+end)
+
 -- can never have too many calendars?
 hs.loadSpoon("Calendar")
 hs.loadSpoon("HCalendar")
