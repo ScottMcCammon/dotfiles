@@ -14,19 +14,23 @@ function sam_popd {
 }
 
 function parse_git_branch() {
-  git name-rev HEAD 2> /dev/null | sed 's/^HEAD\ \(.*\)/(git:\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(git:\1)/'
 }
 
 function better_git_diff() {
-	git diff "${@}" | colordiff.py | less -iFXRS -x4
+    git diff "${@}" | colordiff.py | less -iFXRS -x4
 }
 
 function better_git_show() {
-	git show "${@}" | colordiff.py | less -iFXRS -x4
+    git show "${@}" | colordiff.py | less -iFXRS -x4
 }
 
 function better_ag() {
     /usr/local/bin/ag -H --color "${@}" | less -iFXRS -x4
+}
+
+function diffu() {
+    diff -u "${@}" | colordiff.py | less -iFXRS -x4
 }
 
 WHITE="\[\033[0;37m\]"
@@ -43,10 +47,16 @@ PS1="$GREEN\u$NORM@$RED\h$NORM:$BLUE\W $CYAN\$(parse_git_branch)$NORM\$ "
 
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/#$HOME/~}\007"'
 
-export PIP_REQUIRE_VIRTUALENV=true
-export WORKON_HOME=~/virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+#export PIP_REQUIRE_VIRTUALENV=true
+#export WORKON_HOME=~/virtualenvs
+#source /usr/local/bin/virtualenvwrapper.sh
 
-pushd /opt/puppet-ctl
-pushd /opt/www/assessment
-pushd /opt/www/dds
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

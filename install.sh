@@ -1,9 +1,9 @@
 #!/bin/bash
 
-skipfiles=" install.sh README.md "
+skipfiles=" install.sh README.md .git bin "
 
 mydir=$(basename `pwd`)
-for f in $(find . -type f -depth 1 -not -name '*.swp'); do
+for f in $(find . -depth 1 -not -name '*.swp'); do
     f=${f:2} # trim leading "./"
     if [[ ! $skipfiles = *" $f "* ]]; then
         if [[ -h "../$f" ]]; then

@@ -28,10 +28,5 @@ alias gss='git stash show -p'
 
 alias rot13='tr A-Za-z N-ZA-Mn-za-m'
 
-alias devtail='multitail -cS ddslog /opt/www/dds/data/logs/dds.log -cS phplog /opt/log/php.log /opt/log/mysql/error.log'
-
-alias vmrun='/Applications/VMware\ Fusion.app/Contents/Library/vmrun'
-
 alias agall='better_ag'
-alias ag='echo "ignoring tests - use \`aggall\` to include"; echo; better_ag --ignore tests'
-alias php='php -d error_reporting=24575'
+alias ag='echo "ignoring tests - use \`aggall\` to include"; echo; better_ag --ignore tests --ignore vendor'
