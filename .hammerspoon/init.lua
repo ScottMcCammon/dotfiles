@@ -22,7 +22,7 @@ hs.hotkey.bind({"alt"}, "0", function()
 end)
 
 hs.hotkey.bind({"alt"}, "9", function()
-  hs.application.launchOrFocus("Amplify Mail")
+  hs.application.launchOrFocus("Gmail")
 end)
 
 hs.hotkey.bind({"alt"}, "8", function()
