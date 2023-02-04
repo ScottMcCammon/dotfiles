@@ -5,8 +5,8 @@ alias la='ls -GFa'
 alias l='less'
 alias cl='clear'
 alias d='dirs -v'
-alias pu='sam_pushd' # see function defined in .bashrc
-alias pd='sam_popd' # see function defined in .bashrc
+alias pu='sam_pushd' # custom function
+alias pd='sam_popd' # custom function
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -26,7 +26,6 @@ alias gs='git status -bs'
 alias gsl='git --no-pager stash list --pretty=format:"%C(red)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %<(64,trunc)%s %C(green)(%cr)%C(reset)"&&echo'
 alias gss='git stash show -p'
 
-alias rot13='tr A-Za-z N-ZA-Mn-za-m'
-
+# better_ag: custom function
 alias agall='better_ag'
 alias ag='echo "ignoring tests - use \`aggall\` to include"; echo; better_ag --ignore tests --ignore vendor'
