@@ -1,6 +1,8 @@
 #!/bin/bash
 
-skipfiles=" install.sh README.md .git bin "
+xargs brew install < homebrew-packages
+
+skipfiles=" install.sh README.md .git bin homebrew-packages "
 
 mydir=$(basename `pwd`)
 for f in $(find . -depth 1 -not -name '*.swp'); do
