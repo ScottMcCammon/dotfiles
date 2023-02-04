@@ -3,6 +3,12 @@
 # install homebrew packages from Brewfile
 brew bundle
 
+# install oh-my-zsh
+if [[ ! -e "$HOME/.oh-my-zsh" ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    rm "$HOME/.zshrc"
+fi
+
 skipfiles=" install.sh README.md .git bin Brewfile Brewfile.lock.json "
 
 mydir=$(basename `pwd`)

@@ -5,6 +5,15 @@
 # 4. .zlogin (if login)
 # 5. .zlogout
 
+# Path
+export PATH="$PATH:$HOME/bin"
+
+# oh-my-zsh setup
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="agnoster"
+plugins=()
+source $ZSH/oh-my-zsh.sh
+
 # Homebrew setup
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -15,9 +24,6 @@ eval "$(pyenv init -)"
 
 # Ripgrep setup
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
-
-# Home tools
-export PATH="$PATH:$HOME/bin"
 
 # Functions
 source "$HOME/.zsh-functions"
