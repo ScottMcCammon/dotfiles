@@ -1,0 +1,12 @@
+brew "pyenv"
+brew "ripgrep"
+brew "the_silver_searcher"
+brew "gh"
+brew "hub"
+brew "tldr"
+brew "jq"
+brew "exa"
+brew "macvim"
+brew "wget"
+
+cask "homebrew/cask-fonts/font-meslo-for-powerline"

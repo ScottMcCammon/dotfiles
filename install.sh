@@ -1,8 +1,9 @@
 #!/bin/bash
 
-xargs brew install < homebrew-packages
+# install homebrew packages from Brewfile
+brew bundle
 
-skipfiles=" install.sh README.md .git bin homebrew-packages "
+skipfiles=" install.sh README.md .git bin Brewfile Brewfile.lock.json "
 
 mydir=$(basename `pwd`)
 for f in $(find . -depth 1 -not -name '*.swp'); do
