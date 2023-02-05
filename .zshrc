@@ -15,7 +15,12 @@ plugins=()
 source $ZSH/oh-my-zsh.sh
 
 # Homebrew setup
-eval "$(/opt/homebrew/bin/brew shellenv)"
+ARCH=`arch`
+if [[ $ARCH == "arm64" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
 
 # Pyenv setup
 export PYENV_ROOT="$HOME/.pyenv"

@@ -1,5 +1,15 @@
 #!/bin/bash
 
+ARCH=`arch`
+if [[ $ARCH == "arm64" ]]; then
+    BREW_BIN="/opt/homebrew/bin/brew"
+else
+    BREW_BIN="/usr/local/bin/brew"
+fi
+if [[ ! -e "$BREW_BIN" ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 # install homebrew packages from Brewfile
 brew bundle
 
