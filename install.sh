@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e # exit if any command fails
+
 ARCH=`arch`
 if [[ $ARCH == "arm64" ]]; then
     BREW_BIN="/opt/homebrew/bin/brew"
@@ -25,21 +27,30 @@ mydir=$(basename `pwd`)
 for f in $(find . -depth 1 -not -name '*.swp'); do
     f=${f:2} # trim leading "./"
     if [[ ! $skipfiles = *" $f "* ]]; then
-        if [[ -h "../$f" ]]; then
-            echo "updating $f"
-            rm ../$f && ln -s $mydir/$f ..
-        elif [[ ! -e "$HOME/$f" ]]; then
-            echo "installing $f"
-            ln -s $mydir/$f ..
+        # grep DOTFILES_INSTALL_PATH
+        install_path=".."
+        mydir_prefix=""
+        if [[ -f "$f" ]]; then
+            dest=`sed -nr 's|.*DOTFILES_INSTALL_PATH:([.]/)?([^/]+(/[^/]+)*)/?:.*|\2|p' "$f"`
+            if [[ ! -z "$dest" ]]; then
+                install_path="$install_path/$dest"
+                mydir_prefix=`sed -r 's|([^/]+/+)|../|g' <<< "$dest/"`
+                mkdir -p "$install_path"
+            fi
+        fi
+        if [[ -h "$install_path/$f" ]]; then
+            echo "updating $install_path/$f => $mydir/$f"
+            rm "$install_path/$f" && ln -s "${mydir_prefix}$mydir/$f" "$install_path"
+        elif [[ ! -e "$install_path/$f" ]]; then
+            echo "installing $install_path/$f => $mydir/$f"
+            ln -s "${mydir_prefix}$mydir/$f" "$install_path"
         else
-            echo "$f cannot be updated"
+            echo "$install_path/$f cannot be updated"
         fi
     fi
 done
 
-if [[ ! -e "../bin" ]]; then
-    mkdir ../bin
-fi
+mkdir -p ../bin
 for f in $(find ./bin -type f -depth 1 -not -name '*.swp'); do
     f=${f:6} # trim leading "./bin/"
     if [[ -h "../bin/$f" ]]; then
