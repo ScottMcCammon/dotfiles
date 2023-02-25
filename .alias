@@ -30,3 +30,6 @@ alias gss='git stash show -p'
 # better_ag: custom function
 alias agall='better_ag'
 alias ag='echo "ignoring tests - use \`aggall\` to include"; echo; better_ag --ignore tests --ignore vendor'
+
+# neovim is the future
+alias vim='nvim'

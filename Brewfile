@@ -9,5 +9,8 @@ brew "jq"
 brew "exa"
 brew "macvim"
 brew "wget"
+brew "nnn"
+brew "tmux"
+brew "neovim"
 
 cask "homebrew/cask-fonts/font-meslo-for-powerline"
