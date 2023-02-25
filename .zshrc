@@ -14,6 +14,7 @@ DEFAULT_USER=$USER
 ZSH_THEME="agnoster"
 plugins=()
 source $ZSH/oh-my-zsh.sh
+unsetopt autopushd pushdminus share_history
 
 # Homebrew setup
 ARCH=`arch`
