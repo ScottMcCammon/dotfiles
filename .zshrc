@@ -10,6 +10,7 @@ export PATH="$PATH:$HOME/bin"
 
 # oh-my-zsh setup
 export ZSH="$HOME/.oh-my-zsh"
+DEFAULT_USER=$USER
 ZSH_THEME="agnoster"
 plugins=()
 source $ZSH/oh-my-zsh.sh
