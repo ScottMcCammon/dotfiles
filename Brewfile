@@ -1,4 +1,5 @@
 brew "pyenv"
+brew "pyenv-virtualenv"
 brew "ripgrep"
 brew "the_silver_searcher"
 brew "gh"
