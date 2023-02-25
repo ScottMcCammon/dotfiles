@@ -1,30 +1,31 @@
 #!/usr/bin/env python
-
-# \033[0;31m red
-# \033[0;31;47m red with white background
-# \033[0;32m green
-# \033[0;32;47m green with white background
-
-# \033[0;31m red
-# \033[0;31;44m red with blue background
-# \033[0;32m green
-# \033[0;32;44m green with blue background
-
 import sys
 import signal
 import string
 
+COLOR_RED_NOR_BG = '\033[0;31m'
+COLOR_RED_WHI_BG = '\033[0;31;47m'
+COLOR_RED_BLU_BG = '\033[0;31;44m'
+COLOR_GRN_NOR_BG = '\033[0;32m'
+COLOR_GRN_WHI_BG = '\033[0;32;47m'
+COLOR_GRN_BLU_BG = '\033[0;32;44m'
+COLOR_MAG_NOR_BG = '\033[0;35m'
+COLOR_CYA_NOR_BG = '\033[0;36m'
+COLOR_NOR_RED_BG = '\033[0;41m'
+COLOR_NORM_RESET = '\033[0m'
+
+
 class DiffColorer(object):
 
     def reset(self):
-        self.esc_diff = '\033[0;35m'
-        self.esc_hunk = '\033[0;36m'
-        self.esc_add = '\033[0;32m'
-        self.esc_addh = '\033[0;32;44m'
-        self.esc_rem = '\033[0;31m'
-        self.esc_remh = '\033[0;31;44m'
-        self.esc_tws = '\033[0;41m'
-        self.esc_off = '\033[0;0m'
+        self.esc_diff = COLOR_MAG_NOR_BG
+        self.esc_hunk = COLOR_CYA_NOR_BG
+        self.esc_add = COLOR_GRN_NOR_BG
+        self.esc_addh = COLOR_GRN_BLU_BG
+        self.esc_rem = COLOR_RED_NOR_BG
+        self.esc_remh = COLOR_RED_BLU_BG
+        self.esc_tws = COLOR_NOR_RED_BG
+        self.esc_off = COLOR_NORM_RESET
         self.overflow = 0
         self.maxLines = 100000
         self.addLines = []
@@ -113,7 +114,6 @@ class DiffColorer(object):
             add = add[:ws] + self.esc_tws + add[ws:]
         return (rem, add)
 
-
     @classmethod
     def trailingWhitespaceIndex(cls, line):
         """
@@ -184,4 +184,3 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
-
