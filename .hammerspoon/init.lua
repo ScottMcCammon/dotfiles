@@ -2,7 +2,7 @@
 -- sadly there is no "poison control" key for vim
 
 hs.hotkey.bind({"alt"}, "1", function()
-  hs.application.launchOrFocus("MacVim")
+  hs.application.launchOrFocus("Visual Studio Code")
 end)
 
 hs.hotkey.bind({"alt"}, "2", function()
