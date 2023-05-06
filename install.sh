@@ -21,8 +21,9 @@ if [[ ! -e "$HOME/.oh-my-zsh" ]]; then
     rm "$HOME/.zshrc"
 fi
 
-skipfiles=" install.sh README.md .git bin Brewfile Brewfile.lock.json "
+skipfiles=" install.sh README.md .git .config bin Brewfile Brewfile.lock.json "
 
+# install base files and directories
 mydir=$(basename `pwd`)
 for f in $(find . -depth 1 -not -name '*.swp'); do
     f=${f:2} # trim leading "./"
@@ -40,7 +41,8 @@ for f in $(find . -depth 1 -not -name '*.swp'); do
         fi
         if [[ -h "$install_path/$f" ]]; then
             echo "updating $install_path/$f => $mydir/$f"
-            rm "$install_path/$f" && ln -s "${mydir_prefix}$mydir/$f" "$install_path"
+            rm "$install_path/$f"
+            ln -s "${mydir_prefix}$mydir/$f" "$install_path"
         elif [[ ! -e "$install_path/$f" ]]; then
             echo "installing $install_path/$f => $mydir/$f"
             ln -s "${mydir_prefix}$mydir/$f" "$install_path"
@@ -50,12 +52,34 @@ for f in $(find . -depth 1 -not -name '*.swp'); do
     fi
 done
 
+# install .config files
+for f in $(find ./.config -type f -not -name '*.swp'); do
+    f=${f:2} # trim leading "./"
+    confdir=`dirname "$f"`
+    conffile=`basename "$f"`
+    install_path="../$confdir"
+    mydir_prefix=`sed -r 's|([^/]+/+)|../|g' <<< "$confdir/"`
+    if [[ -h "$install_path/$conffile" ]]; then
+        echo "updating $install_path/$conffile => $f"
+        rm "$install_path/$conffile"
+        ln -s "${mydir_prefix}$mydir/$confdir/$conffile" "$install_path"
+    elif [[ ! -e "$install_path/$conffile" ]]; then
+        echo "installing $install_path/$conffile => $mydir/$f"
+        mkdir -p "$install_path"
+        ln -s "${mydir_prefix}$mydir/$confdir/$conffile" "$install_path"
+    else
+        echo "$install_path/$conffile cannot be updated"
+    fi
+done
+
+# install bin files
 mkdir -p ../bin
 for f in $(find ./bin -type f -depth 1 -not -name '*.swp'); do
     f=${f:6} # trim leading "./bin/"
     if [[ -h "../bin/$f" ]]; then
         echo "updating bin/$f"
-        rm ../bin/$f && ln -s ../$mydir/bin/$f ../bin/
+        rm ../bin/$f
+        ln -s ../$mydir/bin/$f ../bin/
     elif [[ ! -e "$HOME/$f" ]]; then
         echo "installing bin/$f"
         ln -s ../$mydir/bin/$f ../bin/

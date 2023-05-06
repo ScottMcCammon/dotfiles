@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Description: Helper script for plugins
+#
+# Shell: POSIX compliant
+
+if [ -z "$NNN_PIPE" ]; then
+    echo "No pipe file found" 1>&2
+    return
+fi
+
+printf "cd to: "
+read -r dir
+
+printf "%s" "0c$dir" > "$NNN_PIPE"
