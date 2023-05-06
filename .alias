@@ -3,7 +3,7 @@ alias la='exa -F --all'
 alias ll='exa -F --long --header --group --git'
 alias llnew='exa -F --long --header --group --git --sort=new'
 alias llold='exa -F --long --header --group --git --sort=old'
-alias l='less'
+alias l='bat'
 alias cl='clear'
 alias d='dirs -v'
 alias pu='sam_pushd' # custom function
