@@ -6,15 +6,19 @@ hs.hotkey.bind({"alt"}, "1", function()
 end)
 
 hs.hotkey.bind({"alt"}, "2", function()
-  hs.application.launchOrFocus("Google Chrome")
+  hs.application.launchOrFocus("Firefox")
 end)
 
 hs.hotkey.bind({"alt"}, "3", function()
-  hs.application.launchOrFocus("iTerm")
+  hs.application.launchOrFocus("kitty")
 end)
 
 hs.hotkey.bind({"alt"}, "4", function()
   hs.application.launchOrFocus("Sequel Ace")
+end)
+
+hs.hotkey.bind({"alt"}, "5", function()
+  hs.application.launchOrFocus("Checkvist")
 end)
 
 hs.hotkey.bind({"alt"}, "0", function()
@@ -31,6 +35,14 @@ end)
 
 hs.hotkey.bind({"alt"}, "7", function()
   hs.application.launchOrFocus("Google Meet")
+end)
+
+-- toggle mute
+hs.hotkey.bind({"alt"}, "d", function()
+  app = hs.appfinder.appFromName("Google Meet")
+  if app and app:activate() then
+    hs.eventtap.keyStroke({"cmd"}, "d", 200, app)
+  end
 end)
 
 -- can never have too many calendars?
