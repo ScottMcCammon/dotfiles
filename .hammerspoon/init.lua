@@ -1,51 +1,47 @@
--- speed-dial for the most commonly used apps
--- sadly there is no "poison control" key for vim
+--
+-- global hotkeys for most frequently used apps
+--
+local global_apps = {
+  {key = "1", name = "Zed"},
+  {key = "2", name = "Firefox"},
+  {key = "3", name = "kitty"},
+  {key = "4", name = "Simulator"},
+  {key = "5", name = "Reminders"},
+  {key = "6", name = "Notes"},
+  {key = "7", name = "Finder"},
+  {key = "8", name = "Calendar"},
+  {key = "9", name = "Gmail"},
+  {key = "0", name = "Messages"},
+  {key = "C", name = "Comet"},
+  {key = "X", name = "Xcode"},
+}
 
-hs.hotkey.bind({"alt"}, "1", function()
-  hs.application.launchOrFocus("Visual Studio Code")
+hs.loadSpoon("ModalMgr")
+spoon.ModalMgr:init()
+spoon.ModalMgr:new("apps")
+local cmodal = spoon.ModalMgr.modal_list["apps"]
+for _, v in ipairs(global_apps) do
+    cmodal:bind("", v.key, v.name, function()
+        hs.application.launchOrFocus(v.name)
+        spoon.ModalMgr:deactivate({"apps"})
+    end)
+end
+
+-- show cheat sheet if bound key held for 1s
+local hyperCheatTimer = hs.timer.delayed.new(1.0, function()
+  spoon.ModalMgr:toggleCheatsheet()
 end)
 
-hs.hotkey.bind({"alt"}, "2", function()
-  hs.application.launchOrFocus("Firefox")
-end)
-
-hs.hotkey.bind({"alt"}, "3", function()
-  hs.application.launchOrFocus("kitty")
-end)
-
-hs.hotkey.bind({"alt"}, "4", function()
-  hs.application.launchOrFocus("Sequel Ace")
-end)
-
-hs.hotkey.bind({"alt"}, "5", function()
-  hs.application.launchOrFocus("Checkvist")
-end)
-
-hs.hotkey.bind({"alt"}, "0", function()
-  hs.application.launchOrFocus("Slack")
-end)
-
-hs.hotkey.bind({"alt"}, "9", function()
-  hs.application.launchOrFocus("Gmail")
-end)
-
-hs.hotkey.bind({"alt"}, "8", function()
-  hs.application.launchOrFocus("Google Calendar")
-end)
-
-hs.hotkey.bind({"alt"}, "7", function()
-  hs.application.launchOrFocus("Google Meet")
-end)
-
--- toggle mute
-hs.hotkey.bind({"alt"}, "d", function()
-  app = hs.appfinder.appFromName("Google Meet")
-  if app and app:activate() then
-    hs.eventtap.keyStroke({"cmd"}, "d", 200, app)
-  end
-end)
-
--- can never have too many calendars?
-hs.loadSpoon("Calendar")
-hs.loadSpoon("HCalendar")
-spoon.HCalendar:start()
+hs.hotkey.bind({}, "F18",   -- F18 bound to CAPS-LOCK in Karabiner
+    function()
+        spoon.ModalMgr.supervisor:enter()
+        spoon.ModalMgr:deactivateAll()
+        spoon.ModalMgr:activate({"apps"}, "#FFBD2E", false)
+        hyperCheatTimer:start()
+    end,
+    function()
+        hyperCheatTimer:stop()
+        spoon.ModalMgr:deactivateAll()
+        spoon.ModalMgr.supervisor:exit()
+    end
+)
