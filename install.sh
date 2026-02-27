@@ -9,21 +9,25 @@ else
     BREW_BIN="/usr/local/bin/brew"
 fi
 if [[ ! -e "$BREW_BIN" ]]; then
+    echo "Installing homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # install homebrew packages from Brewfile
+echo "Installing homebrew packages"
 brew bundle
 
 # install oh-my-zsh
 if [[ ! -e "$HOME/.oh-my-zsh" ]]; then
+    echo "Installing oh-my-zsh"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     rm "$HOME/.zshrc"
 fi
 
-skipfiles=" install.sh README.md .git .config bin Brewfile Brewfile.lock.json "
+skipfiles=" install.sh README.md .git .config bin Brewfile Brewfile.lock.json .DS_Store "
 
 # install base files and directories
+echo "Installing ~/ dotfiles"
 mydir=$(basename `pwd`)
 for f in $(find . -depth 1 -not -name '*.swp'); do
     f=${f:2} # trim leading "./"
@@ -53,6 +57,7 @@ for f in $(find . -depth 1 -not -name '*.swp'); do
 done
 
 # install .config files
+echo "Installing ~/.config/ files"
 for f in $(find ./.config -type f -not -name '*.swp'); do
     f=${f:2} # trim leading "./"
     confdir=`dirname "$f"`
@@ -73,6 +78,7 @@ for f in $(find ./.config -type f -not -name '*.swp'); do
 done
 
 # install bin files
+echo "Installing ~/bin/ files"
 mkdir -p ../bin
 for f in $(find ./bin -type f -depth 1 -not -name '*.swp'); do
     f=${f:6} # trim leading "./bin/"
