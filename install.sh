@@ -24,7 +24,7 @@ if [[ ! -e "$HOME/.oh-my-zsh" ]]; then
     rm "$HOME/.zshrc"
 fi
 
-skipfiles=" install.sh README.md .git .config bin Brewfile Brewfile.lock.json .DS_Store "
+skipfiles=" install.sh README.md .git .gitignore .config bin Brewfile Brewfile.lock.json .DS_Store "
 
 # install base files and directories
 echo "Installing ~/ dotfiles"
