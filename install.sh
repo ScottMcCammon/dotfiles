@@ -20,8 +20,14 @@ brew bundle
 # install oh-my-zsh
 if [[ ! -e "$HOME/.oh-my-zsh" ]]; then
     echo "Installing oh-my-zsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     rm "$HOME/.zshrc"
+fi
+
+# install nvm
+if [[ ! -e "$HOME/.nvm/install.sh" ]]; then
+    echo "Installing nvm"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh)"
 fi
 
 skipfiles=" install.sh README.md .git .gitignore .config bin Brewfile Brewfile.lock.json .DS_Store "
