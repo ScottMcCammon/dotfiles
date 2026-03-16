@@ -1,4 +1,4 @@
-alias ls='eza -F'
+alias ls='eza --classify=auto'  # replace trailing -F due to tab completion bug
 alias la='eza -F --all'
 alias ll='eza -F --long --header --group --git'
 alias llnew='eza -F --long --header --group --git --sort=new'
