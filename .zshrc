@@ -13,6 +13,11 @@ plugins=()
 source $ZSH/oh-my-zsh.sh
 unsetopt autopushd pushdminus share_history
 
+# shell history config
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoredups:erasedups
+
 # Pyenv setup (deprecated - moving toward conda and uv+venv)
 #export PYENV_ROOT="$HOME/.pyenv"
 #command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
