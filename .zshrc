@@ -37,6 +37,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# OpenCode setup - local models cant handle claudes system prompts
+export OPENCODE_DISABLE_CLAUDE_CODE=1
+
 # Functions
 source "$HOME/.zsh-functions"
 
