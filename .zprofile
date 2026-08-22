@@ -12,6 +12,10 @@ export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 # Init OrbStack command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
+# Init emscripten SDK
+# (uncomment when ready to work on a wasm project, e.g.)
+#source "/Users/samiam/dev/emsdk/emsdk_env.sh"
+
 # Homebrew setup
 ARCH=`arch`
 if [[ $ARCH == "arm64" ]]; then
